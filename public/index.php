@@ -43,6 +43,9 @@ $comicschedule = loadOutput();
             animation-duration: 500ms;
             animation-timing-function: ease;
         }
+        .is-checked {
+            background-color: pink!important;
+        }
     </style>
 </head>
 
@@ -116,7 +119,7 @@ $comicschedule = loadOutput();
                     </thead>
                     <tbody>
                         <?php foreach($comicschedule->rows as $row) : if($row->mine != $mine) { continue; } ?>
-                        <tr>
+                        <tr class="datatr">
                             <td style="white-space: nowrap"><?= $row->salesDate ?></td>
                             <td><?= $row->title ?></td>
                             <td><?= $row->author ?></td>
@@ -134,6 +137,17 @@ $comicschedule = loadOutput();
         &copy; cranpun-lab
         </section>
     </footer>
+    <script type="text/javascript">
+    window.addEventListener("load", () => {
+        document.querySelectorAll(".datatr").forEach((tr) => {
+            tr.addEventListener("click", (e) => {
+                const nowtd = e.target;
+                const nowtr = nowtd.parentElement;
+                nowtr.classList.toggle("is-checked");
+            });
+        });
+    });
+    </script>
 </body>
 
 </html>
