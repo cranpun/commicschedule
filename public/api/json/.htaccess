@@ -1,4 +1,3 @@
-<IfModule mod_headers.c>
-    SetEnvIfNoCase Origin "https?://(www\.)?(timetitle\.cranpun-tool\.ml|optimistic-noether-509f65\.netlify\.app/|localhost)(:\d+)?$" AccessControlAllowOrigin=$0
-    Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
-</IfModule>
+SetEnvIf Origin "^(https://optimistic-noether-509f65.netlify.app|https://timetitle.cranpun-tool.ml)" ALLOWED_ORIGIN=$0
+Header set Access-Control-Allow-Origin %{ALLOWED_ORIGIN}e env=ALLOWED_ORIGIN
+Header set Access-Control-Allow-Headers Content-Type
