@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
         const get = async (url = "", data = {}) => {
             const response = await fetch(url, {
                 method: "GET",
-                //mode: "cors",
+                mode: "cors",
                 cache: "no-cache",
                 headers: {
                     "Content-Type": "application/json",
