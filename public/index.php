@@ -76,8 +76,7 @@ $comicschedule = loadOutput();
             </section>
             <section id="navbar-headermenu" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item">menuL1</a>
-                    <a class="navbar-item">menuL2</a>
+                    <a id="act-list-open" class="navbar-item">list</a>
                 </div>
                 <div class="navbar-end">
                     <a class="navbar-item">menuR1</a>
@@ -120,10 +119,10 @@ $comicschedule = loadOutput();
                     <tbody>
                         <?php foreach($comicschedule->rows as $row) : if($row->mine != $mine) { continue; } ?>
                         <tr class="datatr">
-                            <td style="white-space: nowrap"><?= $row->salesDate ?></td>
-                            <td><?= $row->title ?></td>
-                            <td><?= $row->author ?></td>
-                            <td style="white-space: nowrap"><?= $row->publisherName ?></td>
+                            <td class="td-salesDate" style="white-space: nowrap"><?= $row->salesDate ?></td>
+                            <td class="td-title"><?= $row->title ?></td>
+                            <td class="td-author"><?= $row->author ?></td>
+                            <td class="td-publisherName" style="white-space: nowrap"><?= $row->publisherName ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -131,6 +130,16 @@ $comicschedule = loadOutput();
                 <?php endforeach; ?>
             </div>
         <section>
+
+        <section>
+        <div id="modal-list" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <textarea id="area-list" style="width: 100%;" rows="15" readonly></textarea>
+            </div>
+            <button id="act-list-close" class="modal-close is-large" aria-label="close"></button>
+        </div>
+        </section>
     </main>
     <footer id="footer" class="footer">
         <section class="content has-text-centered">
@@ -146,6 +155,32 @@ $comicschedule = loadOutput();
                 nowtr.classList.toggle("is-checked");
             });
         });
+        document.querySelector("#act-list-open").addEventListener("click", () => {
+            const list = [];
+            document.querySelectorAll(".is-checked").forEach((tr) => {
+                const salesDate = tr.querySelector(".td-salesDate").innerText;
+                const title = tr.querySelector(".td-title").innerText;
+                const author = tr.querySelector(".td-author").innerText;
+                const publisherName = tr.querySelector(".td-publisherName").innerText;
+                const row = `${salesDate} ${title} ${author} ${publisherName}`;
+                list.push(row);
+            });
+
+            if(list.length > 0) {
+                document.querySelector("#area-list").value = "・" + list.join("\n・");
+            } else {
+                document.querySelector("#area-list").value = "（選択なし）";
+            }
+
+            const modal = document.querySelector("#modal-list");
+            modal.classList.add("is-active");
+        });
+        const closefunc = () => {
+            const modal = document.querySelector("#modal-list");
+            modal.classList.remove("is-active");
+        };
+        document.querySelector("#act-list-close").addEventListener("click", closefunc);
+        document.querySelector(".modal-background").addEventListener("click", closefunc);
     });
     </script>
 </body>
