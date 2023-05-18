@@ -7,6 +7,7 @@ $dotenv->load();
 
 /**
  * https://webservice.rakuten.co.jp/api/booksbooksearch/
+ * https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?publisherName=KADOKAWA&applicationId=xxx&size=9&sort=-releaseDate&page=1
  */
 function downloadData($page, $size, $publisherName, $seriesName)
 {
@@ -108,8 +109,9 @@ function makeData($publisherNames, $comics)
         // コミックス（size=9）。シリーズは全部
         $rows = array_merge($rows, makeDataPages(9, $publisherName, null, $comics, $range));
     }
-    // 電撃文庫のみ特別対応。角川の電撃文庫。sizeは文庫（2）
+    // 文庫対応。数が少ないのでハードコード。sizeは文庫（2）
     $rows = array_merge($rows, makeDataPages(2, "KADOKAWA", "電撃文庫", $comics, $range));
+    $rows = array_merge($rows, makeDataPages(2, "主婦の友社", null, $comics, $range));
 
     // echo json_encode($ret);
 
@@ -141,3 +143,6 @@ function loadOutput()
 // // print_r($raws);
 // $rows = parseComic($raws);
 // print_r($rows);
+
+//$data = downloadData(1, 9, "マイクロ", "奇異太郎少年");
+//print_r($data);

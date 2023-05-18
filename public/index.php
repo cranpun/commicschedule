@@ -135,7 +135,7 @@ $comicschedule = loadOutput();
         <div id="modal-list" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content">
-                <textarea id="area-list" style="width: 100%;" rows="15" readonly></textarea>
+                <textarea id="area-list" style="width: 100%; padding: 8px;" rows="15" readonly></textarea>
             </div>
             <button id="act-list-close" class="modal-close is-large" aria-label="close"></button>
         </div>
