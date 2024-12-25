@@ -8,7 +8,7 @@ $comicschedule = loadOutput();
     <meta charset="utf-8">
     <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
     <meta name="description" content="comicschedule">
-    <link rel="shortcut icon" href="https://tm.cranpun-tool.ml/wp-content/themes/themeorg/favicon.ico" />
+    <link rel="shortcut icon" href="https://cranpun.sub.jp/tm/wp-content/themes/themeorg/favicon.ico" />
 
     <!-- Bulma -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" />
@@ -54,7 +54,7 @@ $comicschedule = loadOutput();
         <nav class="navbar is-info" role="navigation">
             <section class="navbar-brand">
                 <a class="navbar-item" href="/">
-                    <img src="https://hp.cranpun-tool.ml/wp-content/uploads/cranpun-lab_mark_trans.png" alt="cranpun-lab">
+                    <img src="https://cranpun.sub.jp/cranpun-lab/wp-content/uploads/cranpun-lab_mark_trans.png" alt="cranpun-lab">
                 </a>
                 <a id="burger" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-headermenu">
                     <span aria-hidden="true"></span>
